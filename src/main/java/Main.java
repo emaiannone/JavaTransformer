@@ -36,7 +36,7 @@ public class Main {
             System.out.println("Found the intention to set a fixed seed for generating random numbers. Everytime a random number is generated, the generator will start from the given seed rather than using a random one.");
             Common.wantFixedSeed = true;
             try {
-                Common.seedForRandom = Long.parseLong(args[3]);
+                Common.seedForRandom = Long.parseLong(args[2]);
             } catch (NumberFormatException e) {
                 System.out.println("The supplied seed is not a valid long integer. Using the default one: " + Common.seedForRandom);
             }
