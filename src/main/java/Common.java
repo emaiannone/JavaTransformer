@@ -7,10 +7,21 @@ import com.github.javaparser.ast.stmt.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Random;
 
 public final class Common {
     static String mRootInputPath = "";
     static String mRootOutputPath = "";
+    static long seedForRandom = 42L;
+    static boolean wantFixedSeed = false;
+
+    public Random getRandom() {
+        Random rand = new Random();
+        if (wantFixedSeed) {
+            rand.setSeed(seedForRandom);
+        }
+        return rand;
+    }
 
     public CompilationUnit getParseUnit(File javaFile) {
         CompilationUnit root = null;

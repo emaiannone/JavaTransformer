@@ -70,7 +70,7 @@ public class TryCatch extends VoidVisitorAdapter<Object> {
 
             if (tcNodes.getStatements().size() > 0) {
                 int min = 0, max = tcNodes.getStatements().size() - 1;
-                int place = new Random().nextInt(max - min + 1) + min;
+                int place = mCommon.getRandom().nextInt(max - min + 1) + min;
                 Statement tcStmt = tcNodes.getStatements().get(place);
                 blockStmt.replace(tcStmt, getTryCatchStatement(tcStmt));
             }

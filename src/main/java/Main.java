@@ -12,7 +12,7 @@ public class Main {
          * separate folder for each refactoring will be created in 'transforms' folder
          */
 
-        if (args.length == 2) {
+        if (args.length >= 2) {
             String inputPath = args[0];
             if (!inputPath.endsWith("/")) {
                 inputPath += "/";
@@ -31,6 +31,15 @@ public class Main {
                     "\n\targ[0]: root path for input folder" +
                     "\n\targ[1]: root path for output folder";
             System.out.println(msg);
+        }
+        if (args.length >= 3) {
+            System.out.println("Found the intention to set a fixed seed for generating random numbers. Everytime a random number is generated, the generator will start from the given seed rather than using a random one.");
+            Common.wantFixedSeed = true;
+            try {
+                Common.seedForRandom = Long.parseLong(args[3]);
+            } catch (NumberFormatException e) {
+                System.out.println("The supplied seed is not a valid long integer. Using the default one: " + Common.seedForRandom);
+            }
         }
     }
 

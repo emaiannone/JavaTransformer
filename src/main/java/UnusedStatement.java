@@ -47,7 +47,7 @@ public class UnusedStatement extends VoidVisitorAdapter<Object> {
                 blockStmt.addStatement(statement);
             }
             int min = 0, max = blockStmt.getStatements().size() - 1;
-            int place = new Random().nextInt(max - min + 1) + min;
+            int place = mCommon.getRandom().nextInt(max - min + 1) + min;
             blockStmt.addStatement(place, getUnusedStatement());
             MethodDeclaration md = com.findFirst(MethodDeclaration.class).get();
             md.setBody(blockStmt);
