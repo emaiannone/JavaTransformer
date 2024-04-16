@@ -25,21 +25,22 @@ public class Main {
             }
             Common.mRootOutputPath = outputPath;
 
+            if (args.length >= 3) {
+                System.out.println("Found the intention to set a fixed seed for generating random numbers. Everytime a random number is generated, the generator will start from the given seed rather than using a random one.");
+                Common.wantFixedSeed = true;
+                try {
+                    Common.seedForRandom = Long.parseLong(args[2]);
+                } catch (NumberFormatException e) {
+                    System.out.println("The supplied seed is not a valid long integer. Using the default one: " + Common.seedForRandom);
+                }
+            }
+
             inspectDataset();
         } else {
             String msg = "Error (args):" +
                     "\n\targ[0]: root path for input folder" +
                     "\n\targ[1]: root path for output folder";
             System.out.println(msg);
-        }
-        if (args.length >= 3) {
-            System.out.println("Found the intention to set a fixed seed for generating random numbers. Everytime a random number is generated, the generator will start from the given seed rather than using a random one.");
-            Common.wantFixedSeed = true;
-            try {
-                Common.seedForRandom = Long.parseLong(args[2]);
-            } catch (NumberFormatException e) {
-                System.out.println("The supplied seed is not a valid long integer. Using the default one: " + Common.seedForRandom);
-            }
         }
     }
 
