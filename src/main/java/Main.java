@@ -53,7 +53,7 @@ public class Main {
                         true)
         );
 
-        javaFiles.parallelStream().forEach((javaFile) -> {
+        javaFiles.forEach((javaFile) -> {
             try {
                 new VariableRenaming().inspectSourceCode(javaFile);
                 new BooleanExchange().inspectSourceCode(javaFile);
